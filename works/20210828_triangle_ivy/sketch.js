@@ -5,9 +5,6 @@ let ivy_arr = [];
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(200);
-
-    // let col = color(random(colors));
-    // ivy_arr[0] = new Ivy(width / 2, height / 2, 4, col);
 }
 
 function draw() {
