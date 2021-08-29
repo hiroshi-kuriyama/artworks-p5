@@ -1,15 +1,18 @@
 class Ivy {
-    constructor(x, y, side_len) {
+    constructor(x, y, side_len, col) {
+        // triangle vertexes
         this.tri_v = [
             createVector(x - side_len / 2, y)
             , createVector(x + side_len, y)
             , createVector(x, y - side_len * Math.sqrt(3))
         ];
+        this.col = col
         this.lifespan = 300;
     }
 
     display() {
-        fill(0);
+        fill(this.col);
+        stroke(255);
         beginShape();
         vertex(this.tri_v[0].x, this.tri_v[0].y);
         vertex(this.tri_v[1].x, this.tri_v[1].y);
