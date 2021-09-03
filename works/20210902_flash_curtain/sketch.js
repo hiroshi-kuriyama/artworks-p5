@@ -1,19 +1,18 @@
 function setup() {
-	createCanvas(800, 600);
-	background(100);
+	createCanvas(800, 450);
+	background(0);
     // noiseSeed(9999);
-	let pos_x = width/2;
-	let pos_y = height/2;
-	let angle;
-	let angle_init = PI/2 //random() * 2 * PI;
+	let init_x = width/2;
+	let init_y = 0;
+	let angle_init = random() * 2 * PI;
+	let angular_velocity = random(PI/20, PI/5);
 	
-	for (let i = 60; i > 0; i--) {
-		fill(0);
-		ellipse(pos_x, pos_y, i /100);
-		angle = angle_init + noise(pos_x/10000, pos_y/10000, i/10000) * 100;
-		
-		pos_x += 10 * sin(angle);
-		pos_y += 10 * cos(angle);
+	for (let i = 0; i < 60; i++) {
+		fill(200);
+		let angle = angle_init + i * angular_velocity;
+		let pos_x = init_x + (60-i) * noise(i/10) * sin(angle);
+		let pos_y = init_y + i * 10;
+		ellipse(pos_x, pos_y, (60-i)/10);
 	}
 }
 
