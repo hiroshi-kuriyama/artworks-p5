@@ -15,8 +15,6 @@ class Curve {
     }
 
     display() {
-        background(0, 50);
-        fill(200);
         let i = this.i;
         let angle = this.angle_init + i * this.angular_velocity;
         let pos_x = this.init_x + (60-i) * noise(i/10) * sin(angle);
