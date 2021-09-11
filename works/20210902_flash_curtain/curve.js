@@ -12,9 +12,6 @@ class Curve {
 
     update() {
         this.i += 1;
-        if (this.i > this.lifespan) {
-            this.i = 0;
-        }
     }
 
     display() {
@@ -23,8 +20,6 @@ class Curve {
         let pos_x = this.init_x + (this.lifespan-i)/10 * noise(i/100) * sin(angle);
         let pos_y =  - 20 + this.init_y + i * 1;
         let r = 4 * (this.lifespan-i) / 100
-        // noStroke();
-        // fill(this.col);
         for (let j = 0; j < r; j += 2) {
             let amt = map(j, 0, r, 0, 1);
             let c = lerpColor(color('white'), this.col, amt);
@@ -34,11 +29,11 @@ class Curve {
         }
     }
 
-    // isDead() {
-    //     if (this.i > 60) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    isDead() {
+        if (this.i > this.lifespan) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

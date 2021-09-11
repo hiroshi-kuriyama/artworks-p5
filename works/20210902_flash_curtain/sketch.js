@@ -9,8 +9,9 @@ function setup() {
 	createCanvas(800, 450);
 	background(0);
 	for (let i = 0; i < NUM_CURVES; i++) {
-		let init_x = i * width / NUM_CURVES + random(0, width / NUM_CURVES);
-		col = color(random(colors));
+		// let init_x = i * width / NUM_CURVES + random(0, width / NUM_CURVES);
+		let init_x = random(0, width);
+		let col = color(random(colors));
 		curves[i] = new Curve(init_x, 0, random(0, LIFE_SPAN), LIFE_SPAN , col);
 	}
 }
@@ -23,6 +24,11 @@ function draw() {
 	for (let i = 0; i < curves.length; i++) {
 		curves[i].update();
 		curves[i].display();
+		if (curves[i].isDead()) {
+			let init_x = random(0, width);
+			let col = color(random(colors));
+			curves[i] = new Curve(init_x, 0, 0, LIFE_SPAN , col);
+		}
 	}
 }
 
