@@ -15,13 +15,9 @@ function setup() {
 
 
 function draw() {
-	background(0);
-	// https://infosmith.biz/blog/it/shadow_glow_p5js_1
-	drawingContext.shadowOffsetX = 0;
-	drawingContext.shadowOffsetY = 0;
-	drawingContext.shadowBlur = 60;
-	drawingContext.shadowColor = '#00FFAA';
-	fill(200);
+	// background(0);
+	fill(0, 20);
+	rect(0, 0, width, height);
 	for (let i = 0; i < curves.length; i++) {
 		curves[i].update();
 		curves[i].display();
