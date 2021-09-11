@@ -1,6 +1,8 @@
 
+let colors = ['#01FFC3', '#01FFFF', '#FFB3FD', '#9D72FF', '#EBF875'];
 let curves = [];
-let NUM_CURVES = 10;
+let NUM_CURVES = 1000;
+let LIFE_SPAN = 400;
 
 function setup() {
 	// frameRate(10);
@@ -9,7 +11,8 @@ function setup() {
     // noiseSeed(9999);
 	for (let i = 0; i < NUM_CURVES; i++) {
 		let init_x = i * width / NUM_CURVES + random(0, width / NUM_CURVES);
-		curves[i] = new Curve(init_x, 0);
+		col = random(colors)
+		curves[i] = new Curve(init_x, 0, random(0, LIFE_SPAN), LIFE_SPAN , col);
 	}
 }
 
