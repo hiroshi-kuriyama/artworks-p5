@@ -1,4 +1,4 @@
-class Curve {
+class Light {
     constructor(init_x, init_y, init_i, lifespan, col) {
         this.init_x = init_x;
         this.init_y = init_y;
@@ -16,10 +16,13 @@ class Curve {
 
     display() {
         let i = this.i;
+        // add gradient noise on light oscillation
         let angle = this.angle_init + i * this.angular_velocity;
         let pos_x = this.init_x + (this.lifespan-i)/10 * noise(i/100) * sin(angle);
+        // light goes down with constant speed 
         let pos_y =  - 20 + this.init_y + i * 1;
-        let r = 4 * (this.lifespan-i) / 100
+        let r = 4 * (this.lifespan-i) / 100;
+        // glow effect to make look neon light
         for (let j = 0; j < r; j += 2) {
             let amt = map(j, 0, r, 0, 1);
             let c = lerpColor(color('white'), this.col, amt);
