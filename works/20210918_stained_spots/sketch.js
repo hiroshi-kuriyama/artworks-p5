@@ -15,15 +15,18 @@ function setup() {
     ellipse(p2[0], p2[1], 10);
     ellipse(p3[0], p3[1], 10);
 
-    for (let i = 0; i < RESOLUTION; i++) {
+    noFill();
+    beginShape();
+    for (let i = 0; i <= RESOLUTION; i++) {
         let t = i / RESOLUTION;
         let x, y;
         x = (1-t)**2 * p1[0] + 2*(1-t)*t * p2[0] + t**2 * p3[0];
         y = (1-t)**2 * p1[1] + 2*(1-t)*t * p2[1] + t**2 * p3[1];
-        fill(255);
-        noStroke();
-        ellipse(x, y, 3);
+        stroke(255);
+        strokeWeight(3);
+        vertex(x, y);
     }
+    endShape();
 }
 
 
