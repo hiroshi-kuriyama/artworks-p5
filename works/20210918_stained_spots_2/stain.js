@@ -14,7 +14,7 @@ class Stain {
         let theta = 0;
         while (theta < 2 * PI) {
             let n, x, y;
-            n = noise(cos(theta) + this.rnd_1, sin(theta) - this.rnd_2);
+            n = noise(0.5 * cos(theta) + this.rnd_1, 0.5 * sin(theta) - this.rnd_2);
             x = this.center[0] + this.size * n**2 * cos(theta);
             y = this.center[1] + this.size * n**2 * sin(theta);
             vertex(x, y);
