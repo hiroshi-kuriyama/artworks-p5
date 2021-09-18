@@ -1,4 +1,3 @@
-// https://ja.javascript.info/bezier-curve
 
 let t = 0;
 let NOISE_SCALE = 10;
@@ -19,15 +18,17 @@ function setup() {
     beginShape();
     for (let i = 0; i <= RESOLUTION; i++) {
         let t = i / RESOLUTION;
+        // bezier curve (https://javascript.info/bezier-curve)
         let x, y;
         x = (1-t)**2 * p1[0] + 2*(1-t)*t * p2[0] + t**2 * p3[0];
         y = (1-t)**2 * p1[1] + 2*(1-t)*t * p2[1] + t**2 * p3[1];
-        let x_n, y_n;
-        x_n = x + NOISE_SCALE * noise(x);
-        y_n = y + NOISE_SCALE * noise(y);
+        // noise
+        // let x_n, y_n;
+        // x_n = x + NOISE_SCALE * noise(x);
+        // y_n = y + NOISE_SCALE * noise(y);
         stroke(255);
         strokeWeight(3);
-        vertex(x_n, y_n);
+        vertex(x, y);
     }
     endShape();
 }
