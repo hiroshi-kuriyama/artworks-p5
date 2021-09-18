@@ -3,6 +3,8 @@ class Stain {
         this.center = center;
         this.size = size;
         this.col = col;
+        this.rnd_1 = random(100);
+        this.rnd_2 = random(100);
     }
 
     display() {
@@ -12,7 +14,7 @@ class Stain {
         let theta = 0;
         while (theta < 2 * PI) {
             let n, x, y;
-            n = noise(cos(theta) + 10, sin(theta) + 0.5);
+            n = noise(cos(theta) + this.rnd_1, sin(theta) - this.rnd_2);
             x = this.center[0] + this.size * n**2 * cos(theta);
             y = this.center[1] + this.size * n**2 * sin(theta);
             vertex(x, y);
