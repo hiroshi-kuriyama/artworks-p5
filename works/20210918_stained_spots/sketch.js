@@ -9,11 +9,14 @@ let p3 = [600, 600];
 function setup() {
     createCanvas(800, 800);
     background(0);
-    fill('red');
-    ellipse(p1[0], p1[1], 10);
-    ellipse(p2[0], p2[1], 10);
-    ellipse(p3[0], p3[1], 10);
+    plot_control_points(p1, p2, p3);
+    bezier_curve(p1, p2, p3);
+}
 
+function draw() {
+}
+    
+function bezier_curve(p1, p2, p3) {
     noFill();
     beginShape();
     for (let i = 0; i <= RESOLUTION; i++) {
@@ -33,7 +36,10 @@ function setup() {
     endShape();
 }
 
-
-function draw() {
+function plot_control_points(p1, p2, p3) {
+    noStroke();
+    fill('red');
+    ellipse(p1[0], p1[1], 10);
+    ellipse(p2[0], p2[1], 10);
+    ellipse(p3[0], p3[1], 10);
 }
-    
