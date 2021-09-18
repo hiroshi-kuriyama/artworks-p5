@@ -1,13 +1,15 @@
-let color_palette = ['#FBFFB9', '#fffff5', '#2b90d9', '#a6172d', '#FADAD8'];
-// 黄色、白、水色、深紅、淡いピンク
+// 黄色、白、深紅、水色、淡いピンク
+let color_palette = ['#FBFFB9', '#ceedff', '#a6172d', '#2b90d9', '#FADAD8'];
+let size_list = [600, 600, 400, 300, 200];
+let order_list = [0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4];
 
 let stains = [];
 
 function setup() {
     createCanvas(800, 800);
     background('#08101E');
-    // let CENTER = [400, 400];
-    // let stain = new Stain(CENTER, 600, color('yellow'));
+    // let center = [400, 400];
+    // let stain = new Stain(center, 600, color('yellow'));
     // stain.display();
 }
 
@@ -18,9 +20,16 @@ function draw(){
     }
 }
 
+let i = 0;
 function mousePressed() {
+    let idx = order_list[i];
     let center = [mouseX, mouseY];
-    let size = random(50, 600);
-    let col = random(color_palette);
+    let size = size_list[idx];
+    let col = color_palette[idx];
     stains.push(new Stain(center, size, col));
+    if(i < order_list.length - 1) {
+        i += 1;
+    } else {
+        i = 0;
+    }
 }
