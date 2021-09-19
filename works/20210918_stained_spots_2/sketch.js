@@ -16,7 +16,9 @@ function setup() {
 function draw(){
     if(stains.length > 0) {
         stains[0].display();
-        stains.shift();
+        if(stains[0].isDead()) {
+            stains.shift();
+        }
     }
 }
 
@@ -25,7 +27,7 @@ function mousePressed() {
     let idx = order_list[i];
     let center = [mouseX, mouseY];
     let size = size_list[idx];
-    let col = color_palette[idx];
+    let col = color(color_palette[idx]);
     stains.push(new Stain(center, size, col));
     if(i < order_list.length - 1) {
         i += 1;

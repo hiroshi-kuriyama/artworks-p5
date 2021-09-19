@@ -1,3 +1,5 @@
+let LIFESPAN = 120;
+
 class Stain {
     constructor(center, size, col) {
         this.center = center;
@@ -5,10 +7,12 @@ class Stain {
         this.col = col;
         this.rnd_1 = random(100);
         this.rnd_2 = random(100);
+        this.lifespan = LIFESPAN;
     }
 
     display() {
-        fill(this.col);
+        let inter = lerpColor(this.col, color(255), map(this.lifespan, 0, LIFESPAN, 0, 1));
+        fill(inter);
         stroke('red');
         beginShape();
         let theta = 0;
@@ -21,5 +25,15 @@ class Stain {
             theta += 0.01;
         }
         endShape(CLOSE);
+        this.lifespan -= 1;
+    }
+
+    isDead() {
+        if(this.lifespan < 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
