@@ -1,4 +1,4 @@
-let LIFESPAN = 120;
+let LIFESPAN = 180;
 
 class Stain {
     constructor(center, size, col) {
@@ -11,9 +11,14 @@ class Stain {
     }
 
     display() {
-        let inter = lerpColor(this.col, color(255), map(this.lifespan, 0, LIFESPAN, 0, 1));
+        // dynamic color gradient. White goes to this.col
+        let inter = lerpColor(
+            this.col, color(255), map(this.lifespan, 0, LIFESPAN, 0, 1)
+            );
         fill(inter);
         stroke('red');
+        // draw a circle
+        // the radius changes according to noise, n.
         beginShape();
         let theta = 0;
         while (theta < 2 * PI) {

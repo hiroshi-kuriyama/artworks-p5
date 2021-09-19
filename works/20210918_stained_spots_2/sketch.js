@@ -1,16 +1,21 @@
+/*
+https://openprocessing.org/sketch/1269732
+:::The back of the beast:::
+This was inspired by a movie, Belle (2021 film). 
+In the movie a beast has some stains on his back. The pattern was impressive.
+
+『竜とそばかすの姫』に出てくるリュウの背中の模様（痣）を表現しました。
+*/
+let stains = [];
+
 // 黄色、白、深紅、水色、淡いピンク
-let color_palette = ['#FBFFB9', '#ceedff', '#a6172d', '#2b90d9', '#FADAD8'];
+let color_palette = ['#FBFFB9', '#ceedff', '#a6172d', '#0e156b', '#FADAD8'];
 let size_list = [600, 600, 400, 300, 200];
 let order_list = [0, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4];
-
-let stains = [];
 
 function setup() {
     createCanvas(800, 800);
     background('#08101E');
-    // let center = [400, 400];
-    // let stain = new Stain(center, 600, color('yellow'));
-    // stain.display();
 }
 
 function draw(){
@@ -24,6 +29,7 @@ function draw(){
 
 let col_i = 0;
 function mousePressed() {
+    // set the color and size following to the order_list
     let idx = order_list[col_i];
     let center = [mouseX, mouseY];
     let size = size_list[idx];
