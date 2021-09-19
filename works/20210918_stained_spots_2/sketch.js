@@ -14,24 +14,24 @@ function setup() {
 }
 
 function draw(){
-    if(stains.length > 0) {
-        stains[0].display();
-        if(stains[0].isDead()) {
-            stains.shift();
+    for(i = 0; i < stains.length; i++) {
+        stains[i].display();
+        if(stains[i].isDead()) {
+            stains.splice(i, 1);
         }
     }
 }
 
-let i = 0;
+let col_i = 0;
 function mousePressed() {
-    let idx = order_list[i];
+    let idx = order_list[col_i];
     let center = [mouseX, mouseY];
     let size = size_list[idx];
     let col = color(color_palette[idx]);
     stains.push(new Stain(center, size, col));
-    if(i < order_list.length - 1) {
-        i += 1;
+    if(col_i < order_list.length - 1) {
+        col_i += 1;
     } else {
-        i = 0;
+        col_i = 0;
     }
 }
