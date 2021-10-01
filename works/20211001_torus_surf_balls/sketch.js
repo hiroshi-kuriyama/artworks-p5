@@ -6,18 +6,17 @@ function setup() {
     background(0);
     u_init = random(2 * PI);
     v_init = random(2 * PI);
-    R = 300;
-    r = 50;
+    R = 250;
+    r = 100;
 }
 
 
-
+let t = 0;
 function draw(){
-    rotateX(PI / 8);
-    rotateZ(PI / 8);
+    t += 1
     let u, v;
-    u = (u_init + millis() / 2500);
-    v = (v_init + millis() / 1000);
+    u = (u_init + t / 13);
+    v = (v_init + t / 17);
     let pos = [];
     pos = torus_surf(u, v, R, r);
     translate(pos[0], pos[1], pos[2]);
@@ -27,10 +26,8 @@ function draw(){
     ambientLight(50);
     directionalLight(255, 255, 255, -1, 0, -1);
     ambientMaterial(122);
-    specularMaterial(250);
+    specularMaterial(0, 100, 255, 100 + 50 * sin(u));
     sphere(3);
-    
-    camera(sin(frameCount * 0.01) * 800, 0, cos(frameCount * 0.01) * 800, 0, 0, 0, 0, 1, 0);
 }
 
 function torus_surf(u, v, R, r) {
