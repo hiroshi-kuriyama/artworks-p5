@@ -13,21 +13,25 @@ function setup() {
 
 let t = 0;
 function draw(){
-    t += 1
-    let u, v;
-    u = (u_init + t / 13);
-    v = (v_init + t / 17);
-    let pos = [];
-    pos = torus_surf(u, v, R, r);
-    translate(pos[0], pos[1], pos[2]);
-
-    fill(0, 100, 255, 123);
-    noStroke();
-    ambientLight(50);
-    directionalLight(255, 255, 255, -1, 0, -1);
-    ambientMaterial(122);
-    specularMaterial(0, 100, 255, 100 + 50 * sin(u));
-    sphere(3);
+    for (let i = 0; i < 100; i++) {
+        push();
+        t += 1
+        let u, v;
+        u = (u_init + t / 5);
+        v = (v_init + t / 7);
+        let pos = [];
+        pos = torus_surf(u, v, R, r);
+        translate(pos[0], pos[1], pos[2]);
+    
+        fill(0, 100, 255, 123);
+        noStroke();
+        ambientLight(50);
+        directionalLight(255, 255, 255, -1, 0, -1);
+        ambientMaterial(122);
+        specularMaterial(0, 100, 255, 100 + 50 * sin(u));
+        sphere(3);
+        pop();
+    }
 }
 
 function torus_surf(u, v, R, r) {
