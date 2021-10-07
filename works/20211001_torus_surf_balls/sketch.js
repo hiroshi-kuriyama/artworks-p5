@@ -1,6 +1,6 @@
 
 
-let u_init, v_init, R, r;
+let u_init, v_init, R, r, a, b;
 function setup() {
     createCanvas(800, 800, WEBGL);
     background(0);
@@ -8,6 +8,11 @@ function setup() {
     v_init = random(2 * PI);
     R = 250;
     r = 100;
+    a = int(random(3, 8));
+    b = int(random(2, a));
+    while(a % b == 0) {
+        b = int(random(2, a));
+    }
 }
 
 
@@ -17,8 +22,8 @@ function draw(){
         push();
         t += 1
         let u, v;
-        u = (u_init + t / 5);
-        v = (v_init + t / 7);
+        u = (u_init + t / b);
+        v = (v_init + t / a);
         let pos = [];
         pos = torus_surf(u, v, R, r);
         translate(pos[0], pos[1], pos[2]);
