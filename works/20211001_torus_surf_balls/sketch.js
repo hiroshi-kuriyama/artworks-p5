@@ -8,11 +8,8 @@ function setup() {
     v_init = random(2 * PI);
     R = 250;
     r = 100;
-    a = int(random(3, 8));
-    b = int(random(2, a));
-    while(a % b == 0) {
-        b = int(random(2, a));
-    }
+    n = int(random(3, 8));
+    m = random_non_divisor(n);
 }
 
 
@@ -22,8 +19,8 @@ function draw(){
         push();
         t += 1
         let u, v;
-        u = (u_init + t / b);
-        v = (v_init + t / a);
+        u = (u_init + t / m);
+        v = (v_init + t / n);
         let pos = [];
         pos = torus_surf(u, v, R, r);
         translate(pos[0], pos[1], pos[2]);
@@ -45,4 +42,12 @@ function torus_surf(u, v, R, r) {
     y = (R + r * cos(u)) * sin(v);
     z = r * sin(u);
     return [x, y, z];
+}
+
+function random_non_divisor(n) {
+    let m = int(random(2, n));
+    while(n % m == 0) {
+        m = int(random(2, n));
+    }
+    return m;
 }
