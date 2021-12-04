@@ -1,9 +1,11 @@
 # Crawling on Torus Surface
 
-Plot spheres on a torus surface. Move parameters to change the orbital.
+Plot spheres on a torus surface. Move parameters to change the orbital.  
 Refresh to shuffle the parameters.
 
-![screen shot](outputs/torus_surf_balls_00.png)
+| | | |
+|---|---|---|
+|![screen shot](outputs/torus_surf_balls_00.png)|![screen shot_1](outputs/torus_surf_balls_01.png)|![screen shot_2](outputs/torus_surf_balls_02.png)|
 
 demo: [https://openprocessing.org/sketch/1378436](https://openprocessing.org/sketch/1378436)
 
