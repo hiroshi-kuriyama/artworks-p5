@@ -1,4 +1,8 @@
-
+/*
+Crawling on Torus Surface
+Plot spheres on a torus surface. Move parameters to change the orbital.
+Refresh to shuffle the parameters.
+*/
 
 let u_init, v_init, R, r, a, b;
 function setup() {
