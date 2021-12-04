@@ -2,12 +2,12 @@
 
 let u_init, v_init, R, r, a, b;
 function setup() {
-    createCanvas(800, 800, WEBGL);
+    createCanvas(windowWidth, windowHeight, WEBGL);
     background(0);
     u_init = random(2 * PI);
     v_init = random(2 * PI);
-    R = 250;
-    r = 100;
+    R = min(windowWidth, windowHeight / 4);
+    r = min(windowWidth, windowHeight / 8);
     n = int(random(3, 8));
     m = random_non_divisor(n);
 }
