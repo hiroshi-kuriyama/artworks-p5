@@ -16,6 +16,7 @@ function setup() {
   video = createCapture(VIDEO);// Creat the video: ビデオオブジェクトを作る
   video.id("video");
   video.size(width, height);
+  video.hide();
 
   const faceOptions = {
     withLandmarks: true,
@@ -42,7 +43,6 @@ function gotFaces(error, result) {
   detections = result;　//Now all the data in this detections: 全ての検知されたデータがこのdetectionの中に
 //   console.log(detections);
 
-  clear();//Draw transparent background;: 透明の背景を描く
   drawBoxs(detections);//Draw detection box: 顔の周りの四角の描画
 
   faceapi.detect(gotFaces);// Call the function again at here: 認識実行の関数をここでまた呼び出す
@@ -50,12 +50,13 @@ function gotFaces(error, result) {
 
 function drawBoxs(detections){
   if (detections.length > 0) {//If at least 1 face is detected: もし1つ以上の顔が検知されていたら
+    clear();
     for (f=0; f < detections.length; f++){
       let {_x, _y, _width, _height} = detections[f].alignedRect._box;
       stroke(44, 169, 225);
       strokeWeight(1);
       noFill();
-      rect(_x, _y, _width, _height);
+      rect(width - (_x + _width), _y, _width, _height);
     }
   }
 }
