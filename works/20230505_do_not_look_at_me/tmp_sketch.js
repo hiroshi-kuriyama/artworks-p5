@@ -33,19 +33,19 @@ function setup(){
 function draw(){
     clear();
     background(0);
-    // fill(0);
-    // stroke(255);
-    // rect(0, 0, width, height);
 
     eye_width = width * (2 / 3);
 
-
     /* pupil */
-    // pupil_center_x = width/2;
-    // pupil_center_y = height/2;
     pupil_center_x = mouseX;
     pupil_center_y = mouseY;
+    drawPupil(pupil_center_x, pupil_center_y);
 
+    /* eyelids */
+    drawEyelids();
+}
+
+function drawPupil(pupil_center_x, pupil_center_y){
     /* pupil layer 1 */
     pg_1.noStroke();
     for(i=0;i<pupil_l1_bp.length-1;i++){
@@ -66,9 +66,9 @@ function draw(){
     
     image(pg_1, 0, 0);
     pg_1.clear();
+}
 
-
-    /* eyelids */
+function drawEyelids(){
     pg_2.background(0);
     /* Outer line of eyelids */
     pg_2.noStroke();
