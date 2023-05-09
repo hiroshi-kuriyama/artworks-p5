@@ -4,13 +4,13 @@ tmp file to check the eye design
 let pg_1, pg_2;
 let eye_width;// width of eye
 
-// let palette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
 let palette = ["#f2eb8a", "#fed000", "#fc8405", "#ed361a", "#e2f0f3", "#b3dce0", "#4464a1", "#ffc5c7", "#f398c3", "#cf3895", "#6d358a", "#06b4b0", "#4b8a5f"];
 let pupil_l1_bp = [];// breaking points of pupil layer 1
 let pupil_l2_bp = [];// breaking points of pupil layer 2
 
 function setup(){
     createCanvas(480, 360);
+    eye_width = width * (2 / 3);
 
     pg_1 = createGraphics(width, height);
     pg_2 = createGraphics(width, height);
@@ -27,14 +27,12 @@ function setup(){
         pupil_l2_bp[i] = random(0, TWO_PI);
     }
     pupil_l2_bp = sort(pupil_l2_bp);
-    pupil_l2_bp[pupil_l_color_num] = pupil_l2_bp[0];    
+    pupil_l2_bp[pupil_l_color_num] = pupil_l2_bp[0];
 }
 
 function draw(){
     clear();
     background(0);
-
-    eye_width = width * (2 / 3);
 
     /* pupil */
     pupil_center_x = mouseX;
@@ -47,6 +45,7 @@ function draw(){
 
 function drawPupil(pupil_center_x, pupil_center_y){
     /* pupil layer 1 */
+    pg_1.clear();
     pg_1.noStroke();
     for(i=0;i<pupil_l1_bp.length-1;i++){
         pg_1.fill(palette[i]);
@@ -65,7 +64,6 @@ function drawPupil(pupil_center_x, pupil_center_y){
     pg_1.ellipse(pupil_center_x, pupil_center_y, eye_width*(sqrt(2)-1)/3);
     
     image(pg_1, 0, 0);
-    pg_1.clear();
 }
 
 function drawEyelids(){
