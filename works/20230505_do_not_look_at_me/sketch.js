@@ -11,12 +11,12 @@ let canvas;
 
 let pg_1, pg_2;
 let eye_width;// width of eye
-let palette = ["#f2eb8a", "#fed000", "#fc8405", "#ed361a", "#e2f0f3", "#b3dce0", "#4464a1", "#ffc5c7", "#f398c3", "#cf3895", "#6d358a", "#06b4b0", "#4b8a5f"];
+let palette = ["#fed000", "#fc8405", "#ed361a", "#e2f0f3", "#b3dce0", "#4464a1", "#ffc5c7", "#f398c3", "#cf3895", "#6d358a", "#06b4b0", "#4b8a5f", "#f2eb8a"];
 let pupil_l1_bp = [];// breaking points of pupil layer 1
 let pupil_l2_bp = [];// breaking points of pupil layer 2
 
 function setup() {
-  canvas = createCanvas(480, 360);
+  canvas = createCanvas(windowWidth, windowHeight);
   canvas.id("canvas");
   background(0);
 
@@ -87,8 +87,10 @@ function drawBoxs(detections){
     /* pupil */
     // pupil_center_x = mouseX;
     // pupil_center_y = mouseY;
-    pupil_center_x = _x + _width / 2;
-    pupil_center_y = _y + _height / 2;
+    face_center_x = _x + _width / 2;
+    face_center_y = _y + _height / 2;
+    pupil_center_x =  width/2 + (face_center_x/width-1/2)*eye_width*(sqrt(2)-1);
+    pupil_center_y = height/2 + (face_center_y/height-1/2)*eye_width*(sqrt(2)-1);
     drawPupil(pupil_center_x, pupil_center_y);
     /* eyelids */
     drawEyelids();
